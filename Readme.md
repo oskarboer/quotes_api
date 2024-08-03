@@ -1,4 +1,10 @@
-# Example curl commands
+## Running
+```shell
+uvicorn main:app --reload
+```
+
+
+## Example curl commands
 
 
 ```shell
