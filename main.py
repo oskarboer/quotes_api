@@ -1,15 +1,34 @@
-from typing import Union
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 
-from fastapi import FastAPI
+from storage import Storage
 
 app = FastAPI()
+storage = Storage()
 
+
+class Quote(BaseModel):
+    text: str
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"I am": "Alive"}
+
+@app.get("/quotes/")
+def get_all_quotes():
+    return storage.get_all_quotes()
+
+@app.post("/quotes/")
+def read_item(quote: Quote):
+    storage.add_quote(quote.text)
+    return quote
+
+@app.get("/quotes/random/")
+def get_random():
+    quote = storage.get_random_quote()
+    if quote:
+        return {"quote": quote}
+    else:
+        raise HTTPException(status_code=404, detail="No quotes available")
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}

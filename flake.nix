@@ -19,6 +19,8 @@
               pip
               ipython
               fastapi
+              uvicorn
+              pydantic
               venvShellHook
             ]);
         };
