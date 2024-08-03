@@ -1,0 +1,14 @@
+[Unit]
+Description=FastAPI Quote Service
+After=network.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/quotes_api/
+ExecStart=/usr/bin/python -m uvicorn main:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=100
+Environment="PATH=/usr/local/bin"
+
+[Install]
+WantedBy=multi-user.target
