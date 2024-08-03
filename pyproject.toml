@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "quote-api"
+version = "0.1.0"
+description = "Basic FastAPI to add quotes and get a dayily quote randomly"
+authors = ["Oskar Boer <oskarboer@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+uvicorn = "^0.30.5"
+pydantic = "^2.8.2"
+fastapi = "^0.112.0"
+
+[tool.poetry.group.dev.dependencies]
+pip = "^24.2"
+ipython = "^8.26.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
